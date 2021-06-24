@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | Interactive pricing component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: url(images/bg-pattern.svg);
+      text-align: center;
+      color: hsl(225, 20%, 60%);
+      font-size: 15px;
+      font-family: 'Manrope', sans-serif;
+    }
+    .container {
+      background: url(images/pattern-circles.svg);
+      background-repeat: no-repeat;
+      background-size: 12em;
+      background-position-x: center;
+      max-width: 100%;
+      width: 420px;
+    }
+    .container>p {
+      width: 50%;
+    }
+    h1, #price {
+      color: hsl(227, 35%, 25%);
+      font-weight: bold;
+      
+    }
+    h1 {
+      font-size: 1.5em;
+    }
+    .card{
+      width: 95%;
+      margin: 70px auto 50px;
+      border-radius: 15px;
+     }
+    #price {
+      font-size: 2.5em;
+      position: relative;
+      bottom: -8px;
+    }
+    
+    /*slider*/
+    .slider {
+    -webkit-appearance: none;
+    width: 90%;
+    height: 10px;
+    background: linear-gradient(to right, hsl(174, 77%, 80%) 0%, hsl(174, 77%, 80%) 50%, hsl(224, 65%, 95%) 50%, hsl(224, 65%, 95%) 100%);  outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    border-radius: 10px;  
+    
+    }
+    .slider:hover {
+      opacity: 1;
+    }
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%; 
+      background: hsl(174, 86%, 45%) url(images/icon-slider.svg);
+      background-size: 20px;
+      background-repeat: no-repeat;
+      background-position-y: center;
+      background-position-x: center;
+      cursor: pointer;
+      box-shadow: 0px 20px 20px hsl(174, 77%, 80%);
+    }
+    #switch {
+      float:none;
+      margin: 0;
+      height: 22px;
+      width: 40px;
+    }
+    .discount {
+      color: hsl(15, 100%, 70%);
+      font-size: 0.8em;
+      font-weight: bold;
+      border-radius: 25px;
+      padding: 6px 10px 6px 10px;
+      background-color: hsl(14, 92%, 95%); 
+      margin-left: 5px;
+      
+    }
+    .dis-text {
+        display:none;
+      }
+    ul {
+      list-style: url(images/icon-check.svg);
+      list-style-position:inside;
+      padding: 0;
+    }
+    li {
+      line-height: 2;
+    }
+    .button {
+      width: 70%;
+      background-color: hsl(227, 35%, 25%);
+      border-radius: 25px;
+      height: 45px;
+      align-items: center;
+    }
+    @media (min-width:1200px) {
+      .container {
+        width: 700px;
+      }
+      .reverse{
+        flex-direction: column-reverse;
+      }
+      .price {
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-top: 20px;
+      }
+      .pageview{
+        margin-top: 50px;
+      }
+      
+      ul{
+        width: 70%;
+        text-align: left;
+        margin-left: auto;
+      }
+      .start-trial {
+        margin: auto;
+      }
+      .dis-text {
+        display:unset;
+      }
+      .container>p {
+      width: 100%;
+    }
+    h1{
+      font-size: 2.5rem;
+    }
+
+    }
+
+
+
+  </style>
+</head>
+<body>
+  <div class="container ">
+  <h1 class="mt-5 pt-5">Simple, traffic-based pricing</h1>
+  <p class="mt-3 mb-5 mx-auto">Sign-up for our 30-day trial. No credit card required. </p>
+  <div class="card ">
+    <div class="row ">
+    <div class="pageview mt-5 mb-2 col-lg-6">
+      <h6 id="pageviews">100K PAGEVIEWS</h6>
+    </div>
+    <div class="option my-4 col-lg-12">
+      <input type="range" min="1" max="5" step="1" class="slider" id="range">
+    </div>
+    <div class="price col-lg-6">
+      <p class="price-text"><span id = "price"> $16.00</span> /month</p>
+    </div>
+    <div class="billing my-5 col-lg-12 px-0 mx-0 form-check form-check-inline form-switch">
+      <p class="mx-0"> Monthly Billing<input class="mx-3 d-block-inline form-check-input" type="checkbox" id="switch">
+        Yearly Billing <span class="discount">-25%<span class="dis-text"> discount</span> </span> 
+      </p>
+    </div>
+    <div class="detail my-3 col-lg-6">
+      <ul>
+        <li>Unlimited websites</li>
+        <li>100% data ownership</li>
+        <li>Email reports</li>
+      </ul>
+    </div>
+    <div class="start-trial mb-5 col-lg-6">
+      <button class="button mx-auto btn btn-primary">Start my trial</button> 
+    </div>
+  </div>
+
+
+
+
+  
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="index.js"></script>
+<div class="attribution">
+  Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+  Coded by <a href="#">Your Name Here</a>.
+</div>
+</body>
+</html>
